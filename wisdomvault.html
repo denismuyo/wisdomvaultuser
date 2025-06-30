@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WISDOM Vault - Indigenous Knowledge Archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements Tailwind can't handle easily */
+        .gradient-bg {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+        }
+        .voice-recording {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        .entry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header/Navigation -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-seedling text-2xl"></i>
+                    <h1 class="text-xl font-bold">WISDOM VAULT</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-white text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-language mr-1"></i> EN
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <nav class="flex flex-col space-y-2">
+                    <a href="#" class="text-white px-3 py-2 rounded hover:bg-blue-700"><i class="fas fa-home mr-2"></i> Home</a>
+                    <a href="#" class="text-white px-3 py-2 rounded hover:bg-blue-700"><i class="fas fa-upload mr-2"></i> Upload</a>
+                    <a href="#" class="text-white px-3 py-2 rounded hover:bg-blue-700"><i class="fas fa-search mr-2"></i> Explore</a>
+                    <a href="#" class="text-white px-3 py-2 rounded hover:bg-blue-700"><i class="fas fa-user mr-2"></i> Profile</a>
+                    <a href="#" class="text-white px-3 py-2 rounded hover:bg-blue-700"><i class="fas fa-sign-in-alt mr-2"></i> Login</a>
+                </nav>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex justify-between items-center mt-4">
+                <div class="flex space-x-1">
+                    <a href="#" class="text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium"><i class="fas fa-home mr-1"></i> Home</a>
+                    <a href="#" class="text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium"><i class="fas fa-upload mr-1"></i> Upload</a>
+                    <a href="#" class="text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium"><i class="fas fa-search mr-1"></i> Explore</a>
+                    <a href="#" class="text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium"><i class="fas fa-user mr-1"></i> Profile</a>
+                </div>
+                <div class="flex space-x-4">
+                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-bold hover:bg-yellow-300">
+                        <i class="fas fa-sign-in-alt mr-1"></i> Login
+                    </button>
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-500">
+                        <i class="fas fa-user-plus mr-1"></i> Register
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <!-- Hero Section -->
+        <section class="gradient-bg rounded-xl text-white p-6 mb-8 shadow-lg">
+            <div class="md:flex items-center">
+                <div class="md:w-2/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Preserving Africa's Environmental Wisdom</h2>
+                    <p class="text-lg mb-6">A digital archive for indigenous knowledge about healing herbs, rain signs, sacred sites, and traditional ecological wisdom.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-white text-blue-800 px-6 py-3 rounded-lg font-bold hover:bg-gray-100">
+                            <i class="fas fa-upload mr-2"></i> Share Your Wisdom
+                        </button>
+                        <button class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-800">
+                            <i class="fas fa-search mr-2"></i> Explore the Vault
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="https://via.placeholder.com/300x200/4ca1af/FFFFFF?text=Wisdom+Illustration" alt="Wisdom Illustration" class="rounded-lg shadow-md">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Campaign -->
+        <section class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-r-lg">
+            <div class="flex items-start">
+                <div class="mr-4 text-yellow-600">
+                    <i class="fas fa-bullhorn text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-800 mb-1">Current Campaign: "The River is Speaking"</h3>
+                    <p class="text-yellow-700">Share your community's stories and knowledge about rivers, water sources, and conservation practices. Top 3 entries will be featured in our annual report!</p>
+                    <button class="mt-3 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-lg font-medium hover:bg-yellow-300">
+                        <i class="fas fa-info-circle mr-1"></i> Learn More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                <div class="text-4xl text-green-600 mb-3"><i class="fas fa-leaf"></i></div>
+                <h3 class="font-bold text-lg mb-2">Healing Plants</h3>
+                <p class="text-gray-600">Traditional remedies and medicinal herbs</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                <div class="text-4xl text-blue-600 mb-3"><i class="fas fa-cloud-rain"></i></div>
+                <h3 class="font-bold text-lg mb-2">Rain Signs</h3>
+                <p class="text-gray-600">Weather prediction from nature</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                <div class="text-4xl text-red-600 mb-3"><i class="fas fa-paw"></i></div>
+                <h3 class="font-bold text-lg mb-2">Animal Wisdom</h3>
+                <p class="text-gray-600">Behavior and conservation knowledge</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                <div class="text-4xl text-purple-600 mb-3"><i class="fas fa-mountain"></i></div>
+                <h3 class="font-bold text-lg mb-2">Sacred Sites</h3>
+                <p class="text-gray-600">Protected places and their stories</p>
+            </div>
+        </section>
+
+        <!-- Featured Entries Carousel -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Featured Wisdom</h2>
+                <a href="#" class="text-blue-600 hover:underline">View All</a>
+            </div>
+            
+            <div class="relative">
+                <div class="overflow-x-auto pb-4">
+                    <div class="flex space-x-4" style="min-width: 100%;">
+                        <!-- Entry Card 1 -->
+                        <div class="entry-card bg-white rounded-lg shadow-md overflow-hidden" style="min-width: 280px;">
+                            <div class="h-40 bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-leaf text-6xl text-green-600"></i>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">Moringa Remedies</h3>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Plants</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">Traditional uses of Moringa oleifera in Samburu medicine</p>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Elder Naserian</span>
+                                    <span class="text-gray-500"><i class="fas fa-language mr-1"></i> Samburu</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Entry Card 2 -->
+                        <div class="entry-card bg-white rounded-lg shadow-md overflow-hidden" style="min-width: 280px;">
+                            <div class="h-40 bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-cloud-rain text-6xl text-blue-600"></i>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">Rain Predictions</h3>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Weather</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">How Maasai read animal behavior to forecast rains</p>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Scout Lemayian</span>
+                                    <span class="text-gray-500"><i class="fas fa-language mr-1"></i> Maa</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Entry Card 3 -->
+                        <div class="entry-card bg-white rounded-lg shadow-md overflow-hidden" style="min-width: 280px;">
+                            <div class="h-40 bg-red-100 flex items-center justify-center">
+                                <i class="fas fa-paw text-6xl text-red-600"></i>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">Elephant Migration</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Animals</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">Traditional paths and conservation knowledge</p>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Elder Kipeno</span>
+                                    <span class="text-gray-500"><i class="fas fa-language mr-1"></i> Swahili</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Entry Card 4 -->
+                        <div class="entry-card bg-white rounded-lg shadow-md overflow-hidden" style="min-width: 280px;">
+                            <div class="h-40 bg-purple-100 flex items-center justify-center">
+                                <i class="fas fa-mountain text-6xl text-purple-600"></i>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg">Sacred Groves</h3>
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Sites</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">Kaya forests of the Mijikenda people</p>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-500"><i class="fas fa-user mr-1"></i> Scout Aisha</span>
+                                    <span class="text-gray-500"><i class="fas fa-language mr-1"></i> English</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="bg-gray-100 rounded-xl p-6 mb-8">
+            <h2 class="text-2xl font-bold text-center mb-8">How The WISDOM Vault Works</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-4xl text-blue-600 mb-4"><i class="fas fa-user-plus"></i></div>
+                    <h3 class="font-bold text-lg mb-2">1. Register</h3>
+                    <p class="text-gray-600">Join as a Knowledge Scout or Community Elder. Elders can request assisted registration.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-4xl text-green-600 mb-4"><i class="fas fa-upload"></i></div>
+                    <h3 class="font-bold text-lg mb-2">2. Share Wisdom</h3>
+                    <p class="text-gray-600">Upload stories, photos, voice notes or videos about traditional knowledge.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-4xl text-purple-600 mb-4"><i class="fas fa-globe-africa"></i></div>
+                    <h3 class="font-bold text-lg mb-2">3. Preserve & Learn</h3>
+                    <p class="text-gray-600">Explore wisdom from across Africa and help preserve endangered knowledge.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice Upload Demo -->
+        <section class="bg-white rounded-xl p-6 mb-8 shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Try Voice Upload</h2>
+            <p class="text-gray-600 mb-6">Record your wisdom directly if typing is difficult:</p>
+            
+            <div class="bg-blue-50 rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                        <i class="fas fa-microphone text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Record Your Knowledge</h3>
+                        <p class="text-sm text-gray-600">Speak clearly in your preferred language</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mb-4">
+                    <button id="recordButton" class="voice-recording bg-red-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:bg-red-600">
+                        <i class="fas fa-microphone text-2xl"></i>
+                    </button>
+                </div>
+                
+                <div id="recordingStatus" class="text-center text-gray-500 mb-4">
+                    Press and hold to record
+                </div>
+                
+                <div class="bg-white rounded-lg p-4 mb-4 hidden" id="recordingPreview">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-medium">Recording Preview</span>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">00:23</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <button class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash mr-1"></i> Delete
+                        </button>
+                        <button class="text-green-600 hover:text-green-800">
+                            <i class="fas fa-save mr-1"></i> Save
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        <i class="fas fa-upload mr-2"></i> Upload Voice Note
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">WISDOM Vault</h3>
+                    <p class="mb-4">Preserving Africa's indigenous environmental knowledge for future generations.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Home</a></li>
+                        <li><a href="#" class="hover:underline">Upload Wisdom</a></li>
+                        <li><a href="#" class="hover:underline">Explore Vault</a></li>
+                        <li><a href="#" class="hover:underline">About Project</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Help Center</a></li>
+                        <li><a href="#" class="hover:underline">Community Guidelines</a></li>
+                        <li><a href="#" class="hover:underline">Elder Assistance</a></li>
+                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Partners</h3>
+                    <p class="mb-2">ACCECIR Foundation</p>
+                    <p class="mb-2">Planet Protectors Portal</p>
+                    <p>UNESCO Living Heritage</p>
+                </div>
+            </div>
+            <div class="border-t border-blue-400 mt-8 pt-6 text-sm text-center">
+                <p>© 2023 WISDOM Vault. All knowledge shared remains the cultural property of originating communities.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation (fixed on mobile) -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
+        <div class="flex justify-around">
+            <a href="#" class="p-4 text-blue-600">
+                <i class="fas fa-home text-xl"></i>
+            </a>
+            <a href="#" class="p-4 text-gray-500 hover:text-blue-600">
+                <i class="fas fa-search text-xl"></i>
+            </a>
+            <a href="#" class="p-4 text-gray-500 hover:text-blue-600">
+                <i class="fas fa-plus-circle text-2xl text-green-600"></i>
+            </a>
+            <a href="#" class="p-4 text-gray-500 hover:text-blue-600">
+                <i class="fas fa-book text-xl"></i>
+            </a>
+            <a href="#" class="p-4 text-gray-500 hover:text-blue-600">
+                <i class="fas fa-user text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Voice recording simulation
+        document.getElementById('recordButton').addEventListener('click', function() {
+            const status = document.getElementById('recordingStatus');
+            const preview = document.getElementById('recordingPreview');
+            
+            this.classList.add('bg-red-600');
+            status.textContent = "Recording... Speak now";
+            status.className = "text-center text-red-500 mb-4";
+            
+            // Simulate recording for demo
+            setTimeout(() => {
+                preview.classList.remove('hidden');
+                status.textContent = "Recording complete";
+                status.className = "text-center text-green-500 mb-4";
+                this.classList.remove('bg-red-600');
+            }, 2000);
+        });
+
+        // Simulate language selector
+        const languageButton = document.querySelector('.language-selector');
+        if(languageButton) {
+            languageButton.addEventListener('click', function() {
+                const dropdown = this.querySelector('.language-dropdown');
+                dropdown.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
